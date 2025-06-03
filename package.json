@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/tombigel/get-element-promise-by-id/issues"
   },
-  "homepage": "https://github.com/tombigel/get-element-promise-by-id#readme",
+  "homepage": "https://tombigel.github.io/get-element-promise-by-id/",
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "@types/node": "^20.12.11",
