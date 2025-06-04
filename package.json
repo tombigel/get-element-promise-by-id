@@ -3,15 +3,20 @@
   "version": "0.1.2",
   "description": "An implementation of getElementById that returns a promise that waits to resolve when the element will be added to the DOM. Using mutation observer and cancelable with an abort signal or a timeout",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
     }
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "dev": "vite",
@@ -23,14 +28,24 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run clean && npm run build:lib",
+    "update-version": "node scripts/update-version.js",
+    "version:patch": "npm version patch && npm run update-version",
     "predeploy": "npm run build:demo",
     "deploy": "gh-pages -d build",
-    "release": "standard-version"
+    "deploy:version": "npm run version:patch && npm run predeploy && npm run deploy",
+    "postdeploy": "git push && git push --tags",
+    "publish-and-deploy": "npm run test && npm run version:patch && npm run deploy && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/tombigel/get-element-promise-by-id.git"
   },
+  "files": [
+    "dist",
+    "LICENSE.txt",
+    "README.md"
+  ],
   "keywords": [
     "getelementbyid",
     "promise",
@@ -57,18 +72,10 @@
     "globals": "^15.2.0",
     "jsdom": "^26.1.0",
     "rimraf": "^6.0.1",
-    "standard-version": "^9.5.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.1"
-  },
-  "standard-version": {
-    "scripts": {
-      "postbump": "npm run build",
-      "postchangelog": "git add CHANGELOG.md",
-      "postcommit": "git push --follow-tags origin main && npm publish"
-    }
   }
 }

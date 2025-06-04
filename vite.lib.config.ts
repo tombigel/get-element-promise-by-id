@@ -14,7 +14,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'GetElementPromiseById',
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format) => format === 'es' ? 'es/index.js' : 'cjs/index.js',
     },
     outDir: 'dist',
     rollupOptions: {
