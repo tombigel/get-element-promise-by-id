@@ -141,7 +141,7 @@ Supported in all modern browsers. For older browser support, ensure these APIs a
 
 ## License
 
-MIT © [Tom Bigelajzen](https://github.com/tombigel)
+MIT
 
 ## Contributing
 
@@ -149,8 +149,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Author
 
-**Tom Bigelajzen**
-
-- Email: <getelementpromise@tombigel.com>
-- GitHub: [@tombigel](https://github.com/tombigel)
-- Website: [tombigel.com](https://tombigel.com)
+**Tom Bigelajzen**  
+[@tombigel](https://github.com/tombigel)
